@@ -1,5 +1,5 @@
 
-LED_On.elf:     file format elf32-avr
+LED_BinaryCounter.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
@@ -21,9 +21,9 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   8 .debug_frame  00000024  00000000  00000000  0000131c  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    000003bf  00000000  00000000  00001340  2**0
+  9 .debug_str    000003d5  00000000  00000000  00001340  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_ranges 00000010  00000000  00000000  000016ff  2**0
+ 10 .debug_ranges 00000010  00000000  00000000  00001715  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -114,18 +114,22 @@ Disassembly of section .text:
   9c:	b1 cf       	rjmp	.-158    	; 0x0 <__vectors>
 
 0000009e <main>:
-#include <util/delay.h>
-
+#include <avr/io.h>
+//#include <util/delay.h>
 
 int main(void)
 {
     DDRB = 0xFF;
   9e:	8f ef       	ldi	r24, 0xFF	; 255
   a0:	87 bb       	out	0x17, r24	; 23
-	PORTB = 0xFF;
-  a2:	88 bb       	out	0x18, r24	; 24
-    
-	return 0;
+	PORTB = 0x00;
+  a2:	18 ba       	out	0x18, r1	; 24
+		i = i + 1;
+		PORTB = i;
+		
+		_delay_ms(100);
+    }*/
+}
   a4:	80 e0       	ldi	r24, 0x00	; 0
   a6:	90 e0       	ldi	r25, 0x00	; 0
   a8:	08 95       	ret

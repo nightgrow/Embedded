@@ -1,0 +1,34 @@
+#include <avr/io.h>
+
+
+int main(void)
+{
+	DDRB = 0xFF;
+	DDRE = 0x00;
+	
+	PORTB = 0xFF;
+    
+    while (1) 
+    {		
+			PORTB = PINE;
+		
+			//if ((PINE&0x00)==0x00)
+			//PORTB = 0xFE;
+			//if ((PINE&0x02)==0x00)
+			//PORTB = 0xFD;
+			//if ((PINE&0x04)==0x00)
+			//PORTB = 0xFB;
+			if ((PINE&0x08)==0x00)
+			PORTB = 0xF7;
+			if ((PINE&0x10)==0x00)
+			PORTB = 0xEF;
+			PORTB = 0xFF;
+			//if ((PINE&0x20)==0x00)
+			//PORTB = 0xDF;
+			//if ((PINE&0x40)==0x00)
+			//PORTB = 0xBF;
+			//if ((PINE&0x80)==0x00)
+			//PORTB = 0x7F;*/
+    }
+}
+

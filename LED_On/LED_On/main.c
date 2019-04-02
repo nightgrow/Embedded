@@ -5,7 +5,7 @@
 int main(void)
 {
     DDRB = 0xFF;
-	PORTB = 0x00;
+	PORTB = 0xFF;
     
 	return 0;
 }
